@@ -96,11 +96,14 @@ function getTouchPos(touch) {
   return [(touch.clientX - rect.left) * (canvas.width / rect.width), (touch.clientY - rect.top) * (canvas.height / rect.height)]
 }
 
-function getMousePos(touch) {  
-  let rect = canvas.getBoundingClientRect();
+function getMousePos(touchEvent) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
 
   return [
-    (touch.clientX - rect.left) * (canvas.width / rect.width),
-    (touch.clientY - rect.top) * (canvas.height / rect.height)
+    (touchEvent.clientX - rect.left) * scaleX,
+    (touchEvent.clientY - rect.top) * scaleY
   ];
 }
+
