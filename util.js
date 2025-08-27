@@ -75,7 +75,7 @@ document.getElementById("canvas").addEventListener("mousemove", (e)=>{
   let [x, y] = getMousePos(e);
   mouse.x = x;
   mouse.y = y;
-  if(touchIdentifier.touches(x, y)){
+  if(mouse.down) if(touchIdentifier.touches(x, y)){
     mouse.touchingCharacter = true;
     e.preventDefault();  
   }
@@ -106,4 +106,3 @@ function getMousePos(touchEvent) {
     (touchEvent.clientY - rect.top) * scaleY
   ];
 }
-
