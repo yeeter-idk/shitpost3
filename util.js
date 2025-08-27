@@ -62,8 +62,7 @@ document.getElementById("canvas").addEventListener("touchcancel", ()=>{
 document.getElementById("canvas").addEventListener("mousedown", (e)=>{
   mouse.down = true;
   
-  let touch = e.changedTouches[0];
-  let [x, y] = getMousePos(touch);
+  let [x, y] = getMousePos(e);
   mouse.x = x;
   mouse.y = y;
   if(touchIdentifier.touches(x, y)){
@@ -73,8 +72,7 @@ document.getElementById("canvas").addEventListener("mousedown", (e)=>{
   //debugTool.startingY = y;
 });
 document.getElementById("canvas").addEventListener("mousemove", (e)=>{
-  let touch = e.changedTouches[0];
-  let [x, y] = getMousePos(touch);
+  let [x, y] = getMousePos(e);
   mouse.x = x;
   mouse.y = y;
   if(touchIdentifier.touches(x, y)){
