@@ -30,7 +30,7 @@ document.getElementById("canvas").addEventListener("touchstart", (e)=>{
   mouse.down = true;
   
   let touch = e.changedTouches[0];
-  let [x, y] = getMousePos(touch);
+  let [x, y] = getTouchPos(touch);
   mouse.x = x;
   mouse.y = y;
   if(touchIdentifier.touches(x, y)){
@@ -41,7 +41,7 @@ document.getElementById("canvas").addEventListener("touchstart", (e)=>{
 });
 document.getElementById("canvas").addEventListener("touchmove", (e)=>{
   let touch = e.changedTouches[0];
-  let [x, y] = getMousePos(touch);
+  let [x, y] = getTouchPos(touch);
   mouse.x = x;
   mouse.y = y;
   if(touchIdentifier.touches(x, y)){
@@ -92,8 +92,17 @@ document.getElementById("canvas").addEventListener("touchcancel", ()=>{
   mouse.touchingCharacter = false;
 });
 
-function getMousePos(touch) {  
+function getTouchPos(touch) {  
   let rect = canvas.getBoundingClientRect();
 
   return [(touch.clientX - rect.left) * (canvas.width / rect.width), (touch.clientY - rect.top) * (canvas.height / rect.height)]
+}
+
+function getMousePos(touch) {  
+  let rect = canvas.getBoundingClientRect();
+
+  return [
+    (touch.clientX - rect.left) * (canvas.width / rect.width),
+    (touch.clientY - rect.top) * (canvas.height / rect.height)
+  ];
 }
